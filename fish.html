@@ -16,6 +16,7 @@
      //  var fishNumber = number1;
       // var fishNumber = random(0.1,1);
     var fishNumber = Math.floor((Math.random() * 10) + 1);
+ 
        
        if(fishNumber == 1){
         var fishHeight = random(50,200);
@@ -229,18 +230,131 @@
           slowLine.updateAndRedraw(); 
         
           fastLine.updateAndRedraw();  
-          
-          fish1.drawFish();
+         if (fishNumber == 1){ 
+         
+           fish1.updateAndRedrawFish();
+         }
+        else if (fishNumber == 2){
+            fish1.updateAndRedrawFish();
           fish2.drawFish();
-          fish3.drawFish();
-          fish4.drawFish();
-          fish5.drawFish();
-          fish6.drawFish();
-          fish7.drawFish();
-          fish8.drawFish();
-          fish9.drawFish();
-          fish10.drawFish();
+          fish2.updateAndRedrawFish();
 
+        }
+       else if (fishNumber == 3){
+        fish1.updateAndRedrawFish();
+         fish2.drawFish();
+          fish2.updateAndRedrawFish();
+          fish3.drawFish();
+          fish3.updateAndRedrawFish();
+        }
+        else if (fishNumber == 4){
+          fish1.updateAndRedrawFish();
+         fish2.drawFish();
+          fish2.updateAndRedrawFish();
+          fish3.drawFish();
+          fish3.updateAndRedrawFish();
+          fish4.drawFish();
+          fish4.updateAndRedrawFish();
+        }
+        else if (fishNumber == 5){
+          fish1.updateAndRedrawFish();
+         fish2.drawFish();
+          fish2.updateAndRedrawFish();
+          fish3.drawFish();
+          fish3.updateAndRedrawFish();
+          fish4.drawFish();
+          fish4.updateAndRedrawFish();
+          fish5.drawFish();
+          fish5.updateAndRedrawFish();
+        }
+        else if (fishNumber == 6 ){
+           fish1.updateAndRedrawFish();
+         fish2.drawFish();
+          fish2.updateAndRedrawFish();
+          fish3.drawFish();
+          fish3.updateAndRedrawFish();
+          fish4.drawFish();
+          fish4.updateAndRedrawFish();
+          fish5.drawFish();
+          fish5.updateAndRedrawFish()
+          fish6.drawFish();
+          fish6.updateAndRedrawFish();
+        }
+        else if (fishNumber == 7){
+          fish1.updateAndRedrawFish();
+         fish2.drawFish();
+          fish2.updateAndRedrawFish();
+          fish3.drawFish();
+          fish3.updateAndRedrawFish();
+          fish4.drawFish();
+          fish4.updateAndRedrawFish();
+          fish5.drawFish();
+          fish5.updateAndRedrawFish()
+          fish6.drawFish();
+          fish6.updateAndRedrawFish();
+
+          fish7.drawFish();
+          fish7.updateAndRedrawFish();
+        }
+        else if (fishNumber == 8){
+          fish1.updateAndRedrawFish();
+         fish2.drawFish();
+          fish2.updateAndRedrawFish();
+          fish3.drawFish();
+          fish3.updateAndRedrawFish();
+          fish4.drawFish();
+          fish4.updateAndRedrawFish();
+          fish5.drawFish();
+          fish5.updateAndRedrawFish()
+          fish6.drawFish();
+          fish6.updateAndRedrawFish();
+
+          fish7.drawFish();
+          fish7.updateAndRedrawFish();
+          fish8.drawFish();
+          fish8.updateAndRedrawFish();
+        }
+        else if (fishNumber == 9){
+          fish1.updateAndRedrawFish();
+         fish2.drawFish();
+          fish2.updateAndRedrawFish();
+          fish3.drawFish();
+          fish3.updateAndRedrawFish();
+          fish4.drawFish();
+          fish4.updateAndRedrawFish();
+          fish5.drawFish();
+          fish5.updateAndRedrawFish()
+          fish6.drawFish();
+          fish6.updateAndRedrawFish();
+
+          fish7.drawFish();
+          fish7.updateAndRedrawFish();
+          fish8.drawFish();
+          fish8.updateAndRedrawFish();
+          fish9.drawFish();
+          fish9.updateAndRedrawFish();
+        }
+        else if (fishNumber == 10){
+          fish1.updateAndRedrawFish();
+         fish2.drawFish();
+          fish2.updateAndRedrawFish();
+          fish3.drawFish();
+          fish3.updateAndRedrawFish();
+          fish4.drawFish();
+          fish4.updateAndRedrawFish();
+          fish5.drawFish();
+          fish5.updateAndRedrawFish()
+          fish6.drawFish();
+          fish6.updateAndRedrawFish();
+          fish7.drawFish();
+          fish7.updateAndRedrawFish();
+          fish8.drawFish();
+          fish8.updateAndRedrawFish();
+          fish9.drawFish();
+          fish9.updateAndRedrawFish();
+          fish10.drawFish();
+          fish10.updateAndRedrawFish();
+}
             
        
         
@@ -311,7 +425,26 @@
             
           }
           
-          void drawFish()
+       
+           void updateAndRedrawFish() {
+            
+            update1();
+            drawFish();
+          
+          }
+          
+          void update1() 
+          { 
+            centerX = centerX + 10;
+          if (centerX > width){
+            centerX = 0;
+            centerY = random(0,600);
+          
+            
+          }
+        
+          } 
+             void drawFish()
           {
             fill(bodyColor);
             // body
@@ -327,7 +460,7 @@
             ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
           
           }
-        
+         
         }
       
         </script> 
