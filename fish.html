@@ -13,6 +13,7 @@
         
 
       Eel eel1 = new Eel(-27, 80);
+      Eel eel2 = new Eel(-27, 80);
     var fishNumber = Math.floor((Math.random() * 10) + 1);
  
        
@@ -231,6 +232,8 @@
 
          eel1.drawEel();
          eel1.updateEel();
+         eel2.eelSeizure();
+         eel2.updateEel();
          if (fishNumber == 1){ 
          
            fish1.updateAndRedrawFish();
@@ -466,7 +469,7 @@
           
         }
         class Eel{
-          var center1, center2, center3, center4, center5, eelY;
+          var center1, center2, center3, center4, center5, eelY, eelColor1, eelColor2, eelColor3, bodyColor1, bodyColor2, bodyColor3;
           Eel(var e1, var e2){
             e1 = center1;
             e2 = center2;
@@ -474,6 +477,12 @@
             center3 = center2 + 146;
             center4 = center2 + 222;
             center5 = center2 + 140;
+            eelColor1 = random(0,360);
+    eelColor2 = random(0,360);
+    eelColor3 = random(0,360);
+    bodyColor1 = random(0,360);
+    bodyColor2 = random(0, 360);
+    bodyColor3 = random(0, 360);
           //var center1 = -27;
           //var center2 = 80;
           //var center3 = 226;
@@ -481,11 +490,12 @@
           //var center5 = 220
           }
           void updateEel(){
-            center1 = center1 + 10;
-            center2 = center2 + 10;
-            center3 = center3 + 10;
-            center4 = center4 + 10;
-            center5 = center5 + 10;
+            var speed1 = random(10,50);
+            center1 = center1 + speed1;
+            center2 = center2 + speed1;
+            center3 = center3 + speed1;
+            center4 = center4 + speed1;
+            center5 = center5 + speed1;
             if(center1 > width){
               center1 = 0;
               center2 = 0;
@@ -506,16 +516,49 @@
           
     noFill();
     strokeWeight(30);
-    stroke(32, 230, 95);
+   // stroke(32, 230, 95);
+   stroke(bodyColor1, bodyColor2, bodyColor3);
+
     beginShape();
-    
+
     curveVertex(center1, eelY);
     curveVertex(center2,eelY-30);
     curveVertex(center3,eelY-30);
     curveVertex(center4,eelY-50);
     endShape();
      noStroke();
-    fill(255,0,0);
+    //fill(255,0,0);
+    fill(eelColor1, eelColor2, eelColor3);
+    
+    ellipse(center5,eelY - 34,13, 13);
+    fill(13, 1, 1);
+    ellipse(center5, eelY - 34,5,5);
+    
+
+}
+void eelSeizure(){
+          //eeeeeeel
+          eelColor1 = random(0,360);
+    eelColor2 = random(0,360);
+    eelColor3 = random(0,360);
+    bodyColor1 = random(0,360);
+    bodyColor2 = random(0, 360);
+    bodyColor3 = random(0, 360);
+    noFill();
+    strokeWeight(30);
+   // stroke(32, 230, 95);
+   stroke(bodyColor1, bodyColor2, bodyColor3);
+
+    beginShape();
+
+    curveVertex(center1, eelY);
+    curveVertex(center2,eelY-30);
+    curveVertex(center3,eelY-30);
+    curveVertex(center4,eelY-50);
+    endShape();
+     noStroke();
+    //fill(255,0,0);
+    fill(eelColor1, eelColor2, eelColor3);
     
     ellipse(center5,eelY - 34,13, 13);
     fill(13, 1, 1);
