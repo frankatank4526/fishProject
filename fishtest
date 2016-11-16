@@ -1,0 +1,282 @@
+<html>
+	<head>
+		<title>FishTank 2.0</title>
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+        // Declare and contruct two objects (h1, h2) from the class HorizontalLine 
+        
+        // Declare and contruct two objects (h1, h2) from the class HorizontalLine 
+        
+        HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
+        
+        HorizontalLine fastLine = new HorizontalLine(50, 2.5);
+        
+        //Fish randomFish = new Fish(200, 100);  
+        
+        int WINDOW_WIDTH = 600;
+        int WINDOW_HEIGHT = 600;
+        
+        int REFRESH_RATE_PER_SECOND = 30;
+        int GREY = 204;
+        ArrayList<Fish> fishList;
+        ArrayList<Eel> eelList;
+        //runs once at the start of the program 
+        void setup() 
+        {
+         fishList = new ArrayList<Fish>(); //guarantees the only thing in the arrayList is Fish 
+         eelList = new ArrayList<Eel>();
+          var numberOfFish = random(1,7);
+          var numberOfEel = random(1,3);
+          for(var i = 0; i < numberOfFish; i++) {
+            var fishHeight = random(50,150);
+            var fishLength = random(50,150);
+            fishList.add(new Fish(fishHeight, fishLength)); //assuming your parameters in your constructor are bodyHeight and bodyLength, you should probably change this
+          }
+          
+
+          for(var i = 0; i < numberOfEel; i++) {
+            
+           eelList.add(new Eel(-27, 80)); //assuming your parameters in your constructor are bodyHeight and bodyLength, you should probably change this
+          }
+          size(WINDOW_WIDTH, WINDOW_HEIGHT);
+        
+          frameRate(REFRESH_RATE_PER_SECOND);//how often per second the draw function is called 
+        
+        }
+        
+        
+        //called repeatedly 
+        void draw() { 
+        
+          background(162, 0, 255);
+        
+          slowLine.updateAndRedraw(); 
+        
+          fastLine.updateAndRedraw();  
+          
+          //randomFish.drawFish();
+        for(var i = 0; i < fishList.size(); i++) {
+        Fish currentFish = fishList.get(i); 
+        currentFish.drawFish();
+        currentFish.update1();    
+} 
+        for(var i = 0; i < eelList.size(); i++) {
+        Eel currentEel = eelList.get(i); 
+        currentEel.drawEel();
+        currentEel.updateEel();
+        } 
+      }
+        
+         
+        
+        class HorizontalLine { 
+          
+          //attributes
+          float ypos, speed; 
+        
+          //constructor 
+          HorizontalLine (float y, float s) {  
+        
+            ypos = y; 
+        
+            speed = s; 
+        
+          } 
+          
+          void updateAndRedraw() {
+          	update();
+          	drawLine();
+          }
+          
+          void update() 
+          { 
+        
+            ypos += speed; 
+        
+            if (ypos > height) 
+            { 
+        
+              ypos = 0; 
+        
+            } 
+        
+        
+          } 
+          
+          void drawLine() 
+          {
+          	 line(0, ypos, width, ypos); 
+		  }
+        
+        }
+        
+        class Fish 
+        {
+        	//attributes 
+        	var centerX, centerY, bodyHeight, bodyLength, tailHeight, tailWidth, bodyColor, bodyColor1, bodyColor2, bodyColor3;
+        	
+        	//constructor 
+        	Fish(var bh, var bl)
+        	{
+        		//attributes on the left, parameters on the right
+        		bodyHeight = bh;
+        		bodyLength = bl; 
+        		tailHeight = random(20,30); 
+        		tailWidth = random(10, 15);
+            bodyColor1 = random(0,255);
+            bodyColor2 = random(0,255);
+            bodyColor3 = random(0,255);
+        		bodyColor = color(bodyColor1, bodyColor2, bodyColor3); 
+        		centerX = random(100, 400);
+        		centerY = random(100, 400); 
+        		
+        	}
+        	
+        	void drawFish()
+        	{
+
+        		fill(bodyColor);
+        		// body
+        		ellipse(centerX, centerY, bodyLength, bodyHeight);
+        		// tail
+        		var tailWidth = bodyLength/4;
+        		var tailHeight = bodyHeight/2;
+        		triangle(centerX-bodyLength/2, centerY,
+        		         centerX-bodyLength/2-tailWidth, centerY-tailHeight,
+        		         centerX-bodyLength/2-tailWidth, centerY+tailHeight);
+        		// eye
+        		fill(33, 33, 33);
+        		ellipse(centerX+bodyLength/4, centerY, bodyHeight/5, bodyHeight/5);
+        	
+        	}
+           void updateAndRedrawFish() {
+            
+            update1();
+            drawFish();
+          
+          }
+          
+          void update1() 
+          { 
+
+            var speed;
+            speed = random(5,50);
+            //speed = 100;
+            centerX = centerX + speed;
+          if (centerX > width){
+            centerX = 0;
+            centerY = random(0,600);
+          
+            
+          }
+        
+          } 
+        
+        }
+        class Eel{
+          var center1, center2, center3, center4, center5, eelY, eelColor1, eelColor2, eelColor3, bodyColorA, bodyColorB, bodyColorC;
+          Eel(var e1, var e2){
+            e1 = center1;
+            e2 = center2;
+            eelY = e2 + 314;
+            center3 = center2 + 146;
+            center4 = center2 + 222;
+            center5 = center2 + 140;
+            eelColor1 = random(0,360);
+    eelColor2 = random(0,360);
+    eelColor3 = random(0,360);
+    bodyColorA = random(0,360);
+    bodyColorB = random(0, 360);
+    bodyColorC = random(0, 360);
+          //var center1 = -27;
+          //var center2 = 80;
+          //var center3 = 226;
+          //var center4 = 302;
+          //var center5 = 220
+          }
+          void updateEel(){
+            var speed1 = random(10,50);
+            center1 = center1 + speed1;
+            center2 = center2 + speed1;
+            center3 = center3 + speed1;
+            center4 = center4 + speed1;
+            center5 = center5 + speed1;
+            if(center1 > width){
+              center1 = 0;
+              center2 = 0;
+              center3 = 0;
+              center4 = 0;
+              center5 = 0;
+              e1 = center1;
+            e2 = center2;
+            center3 = center2 + 146;
+            center4 = center2 + 222;
+            center5 = center2 + 140;
+            eelY = random(50,600);
+            }
+
+          }
+          void drawEel(){
+          //eeeeeeel
+          
+    noFill();
+    strokeWeight(30);
+   // stroke(32, 230, 95);
+   stroke(bodyColorA, bodyColorB, bodyColorC);
+
+    beginShape();
+
+    curveVertex(center1, eelY);
+    curveVertex(center2,eelY-30);
+    curveVertex(center3,eelY-30);
+    curveVertex(center4,eelY-50);
+    endShape();
+     noStroke();
+    //fill(255,0,0);
+    fill(eelColor1, eelColor2, eelColor3);
+    
+    ellipse(center5,eelY - 34,13, 13);
+    fill(13, 1, 1);
+    ellipse(center5, eelY - 34,5,5);
+    
+
+}
+void eelSeizure(){
+          //eeeeeeel
+          eelColor1 = random(0,360);
+    eelColor2 = random(0,360);
+    eelColor3 = random(0,360);
+    bodyColorA = random(0,360);
+    bodyColorB = random(0, 360);
+    bodyColorC = random(0, 360);
+    noFill();
+    strokeWeight(30);
+   // stroke(32, 230, 95);
+   stroke(bodyColor1, bodyColor2, bodyColor3);
+
+    beginShape();
+
+    curveVertex(center1, eelY);
+    curveVertex(center2,eelY-30);
+    curveVertex(center3,eelY-30);
+    curveVertex(center4,eelY-50);
+    endShape();
+     noStroke();
+    //fill(255,0,0);
+    fill(eelColor1, eelColor2, eelColor3);
+    
+    ellipse(center5,eelY - 34,13, 13);
+    fill(13, 1, 1);
+    ellipse(center5, eelY - 34,5,5);
+    
+
+}
+        }
+        </script> 
+    </head>
+    
+    <body>
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>
+    
