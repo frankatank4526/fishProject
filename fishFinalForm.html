@@ -12,12 +12,14 @@
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
         boolean fishFoodCreate = false; 
         HorizontalLine fastLine = new HorizontalLine(50, 2.5);
+        octopus octopus1;
+        octopus1 = new octopus();
         fishFood fishFood1;
 void keyPressed(){
         if(key == 'f'){
           //one "'"
           fishFoodCreate = true;
-          fishFood1 = new fishFood(5000000,500000);
+          fishFood1 = new fishFood(0,0);
         }
         
        }
@@ -69,7 +71,7 @@ void keyPressed(){
         
         //called repeatedly 
         void draw() { 
-        
+        noStroke();
           background(162, 0, 255);
         
           slowLine.updateAndRedraw(); 
@@ -92,6 +94,7 @@ void keyPressed(){
           fishFood1.drawFishFood();
        }
         
+       octopus1.updateAndDrawOctopus();
       }
         
          
@@ -346,6 +349,65 @@ void eelSeizure(){
             fill(0,0,0);
           }
 
+        }
+        class octopus // ITS ACTUALLY A JELLYFISH
+        {
+          octopus(){
+          //  o2 = centerO2;
+            //o1 = centerO1;
+             centerO1 = 300;
+             centerO2 = 264;
+             centerO3 = centerO1 - 28;
+             centerO4 = centerO1 - 19;
+             centerO5 = centerO1 - 11;
+             center10 = 224;
+             center11 = 233;
+             center12 = 245;
+             center13 = 255;
+            
+          }
+          void drawOctopus(){
+            fill(32, 0, 120);
+    ellipse(centerO1, 450, 75, 125);
+    fill(148, 186, 9);
+    // ellipse(285, 225, 26, 26);
+    // ellipse(314, 225, 26, 26);
+    stroke(0, 0, 0);
+    strokeWeight(8);
+    line(centerO2, 459, center10, 517);
+    line(centerO3, 478, center11, 533);
+    line(centerO4, 494, center12, 544);
+    line(centerO5, 508, center13, 558);
+
+          }
+          void updateOctopus(){
+            centerO1 = centerO1 + 10;
+            centerO2 = centerO2 + 10;
+            centerO3 = centerO3 + 10;
+            centerO4 = centerO4 + 10;
+            centerO5 = centerO5 + 10;
+            center10 = center10 + 10;
+            center11 = center11 + 10;
+            center12 = center12 + 10;
+            center13 = center13 + 10;
+            if(centerO1 > 600){
+              centerO1 = 0;
+              centerO2 = 0 - 36;
+              centerO3 = 0 - 28;
+              centerO4 = 0 - 19;
+              centerO5 = 0 - 11;
+              center10 = 0- 76;
+              center11 = 0 - 77;
+              center12 = 0 - 55;
+              center13 = 0 - 45;
+
+            }
+          }
+         void updateAndDrawOctopus(){
+          updateOctopus();
+          drawOctopus();
+         }
+   
         }
         </script> 
     </head>
