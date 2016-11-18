@@ -72,7 +72,7 @@ void keyPressed(){
         //called repeatedly 
         void draw() { 
         noStroke();
-          background(162, 0, 255);
+          background(0, 155, 255);
         
           slowLine.updateAndRedraw(); 
         
@@ -201,8 +201,8 @@ void keyPressed(){
           }
           if (centerX > width){
             centerX = 0;
-            centerY = random(0,600);
-          
+            //centerY = random(0,600);
+          //
 
           }
           if(fishFoodCreate == true){
@@ -227,7 +227,7 @@ void keyPressed(){
 
             }
             else{
-              centerY = centerY -3;
+              centerY = centerY -5;
             }
           }
         
@@ -343,10 +343,11 @@ void eelSeizure(){
           }
 
           void drawFishFood(){
+             fill(112, 62 ,0);
             ellipse(500, 100, 20,20);
             
 
-            fill(0,0,0);
+           
           }
 
         }
@@ -364,10 +365,14 @@ void eelSeizure(){
              center11 = 233;
              center12 = 245;
              center13 = 255;
+             octopusColor1 = random(0,255);
+             octopusColor2 = random(0,255);
+             octopusColor3 = random(0,255);
             
+            //nyaaaaaaaaaaan 
           }
           void drawOctopus(){
-            fill(32, 0, 120);
+            fill(octopusColor1, octopusColor2, octopusColor3);
     ellipse(centerO1, 450, 75, 125);
     fill(148, 186, 9);
     // ellipse(285, 225, 26, 26);
